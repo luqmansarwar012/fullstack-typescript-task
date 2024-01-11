@@ -1,9 +1,17 @@
-var express = require('express');
+var express = require("express");
+const { search } = require("../controllers/search");
+const { clearCache } = require("../controllers/clearCache");
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+// Home Route
+router.get("/", async (req, res, next) => {
+  res.render("index");
 });
+
+// Search Route For Github
+router.post("/search", search);
+
+// Route for clearing cache
+router.post("/api/clear-cache", clearCache);
 
 module.exports = router;
