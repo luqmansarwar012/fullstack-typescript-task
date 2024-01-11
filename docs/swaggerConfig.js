@@ -11,7 +11,7 @@ const swaggerOptions = {
         "APIs for searching github repo,users and type furthermore clear-cache",
     },
   },
-  apis: ["./routes/index.js", "./docs/swaggerDocs.js"],
+  apis: ["./routes/index.js", "./docs/swaggerDocs.yaml"],
 };
 
 module.exports = swaggerJSDoc(swaggerOptions);

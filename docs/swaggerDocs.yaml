@@ -1,0 +1,48 @@
+paths:
+  /search:
+    post:
+      summary: "Search for something"
+      description: "Performs a search based on the provided criteria"
+      tags:
+        - "Github Practice Task"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                result:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: "Successful search"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: string
+        "500":
+          description: "Internal Server Error"
+
+  /clear-cache:
+    post:
+      summary: "Clear the cache"
+      description: "Clears the cache logic"
+      tags:
+        - "Github Practice Task"
+      responses:
+        "200":
+          description: "Cache cleared successfully"
+        "500":
+          description: "Internal Server Error"
