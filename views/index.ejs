@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Github search task</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    Github search task
-  </body>
-</html>
+<% include ./partials/header.ejs %>
+<div class="min-h-screen bg-sky-blue-500 flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <div class="search-header flex items-center">
+      <div class="search-header-icon bg-sky-blue-500 p-4">
+        <i class="ri-github-fill text-6xl text-black"></i>
+      </div>
+      <div class="searhc-header-content ml-4">
+        <h1 class="text-2xl font-bold mb-1">Github Searcher</h1>
+        <p>Search github users, repositories, or issues below</p>
+      </div>
+    </div>
+    <div class="search-body">
+      <form class="flex flex-col" method="post" action="/search">
+        <!-- First Row: Text Input and Type Menu -->
+        <div class="flex items-center mb-4">
+          <input
+            type="text"
+            name="text"
+            class="border rounded px-2 py-1 mr-2"
+            placeholder="Start typing to search"
+          />
+          <select class="border rounded px-2 py-1" name="type">
+            <option value="users">Users</option>
+            <option value="repositories">Repositories</option>
+            <option value="issues">Issues</option>
+          </select>
+        </div>
+
+        <!-- Second Row: Search Button -->
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            class="bg-gray-800 text-white rounded px-4 py-2"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include ./partials/footer.ejs %>

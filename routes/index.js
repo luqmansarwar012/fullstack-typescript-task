@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Home Route
 router.get("/", async (req, res, next) => {
-  res.render("index");
+  res.render("index", { data: {} });
 });
 
 // Search Route For Github
