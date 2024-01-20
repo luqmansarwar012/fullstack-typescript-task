@@ -13,6 +13,6 @@ router.get("/", async (req, res, next) => {
 router.post("/search", cacheResponseMiddleware, search);
 
 // Route for clearing cache
-router.post("/api/clear-cache", clearCache);
+router.post("/clear-cache", clearCache);
 
 module.exports = router;

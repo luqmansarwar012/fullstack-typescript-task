@@ -26,10 +26,19 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
-                    type: string
-                  result:
+                  data:
                     type: object
+                    properties:
+                      total_count:
+                        type: number
+                      incomplete_results:
+                        type: boolean
+                      items:
+                        type: array
+                        items:
+                          type: object
+                  fromCache:
+                    type: boolean
         "500":
           description: "Internal Server Error"
 
@@ -42,5 +51,12 @@ paths:
       responses:
         "200":
           description: "Cache cleared successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
         "500":
           description: "Internal Server Error"
