@@ -1,8 +1,8 @@
-var express = require("express");
-const { search } = require("../controllers/search");
-const { clearCache } = require("../controllers/clearCache");
+const express = require("express");
+const { search, clearCache } = require("../controllers/indexController");
+const searchRequestValidator = require("../validators/searchRequestValidator");
 const cacheResponseMiddleware = require("../middlewares/cacheResponseMiddleware");
-var router = express.Router();
+const router = express.Router();
 
 // Home Route
 router.get("/", async (req, res, next) => {
@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // Search Route For Github
-router.post("/search", cacheResponseMiddleware, search);
+router.post("/search", searchRequestValidator, cacheResponseMiddleware, search);
 
 // Route for clearing cache
 router.post("/clear-cache", clearCache);
