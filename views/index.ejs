@@ -1,4 +1,5 @@
 <% include ./partials/header.ejs %>
+<!-- search UI -->
 <div class="min-h-screen bg-sky-blue-500 flex items-center justify-center">
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <div class="search-header flex items-center">
@@ -40,4 +41,41 @@
     </div>
   </div>
 </div>
-<% include ./partials/footer.ejs %>
+<!-- Content UI -->
+<% if (data && data.length > 0) { %>
+<div class="min-h-screen flex items-center justify-center">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% data.forEach(item => { %>
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <% if (item.type === 'repository') { %>
+      <!-- Repository Card -->
+      <h2 class="text-xl font-bold mb-2"><%= item.name %></h2>
+      <p class="text-gray-600">Author: <%= item.owner.login %></p>
+      <p class="text-gray-600">Stars: <%= item.stargazers_count %></p>
+      <!-- Add other repository statistics here -->
+      <% } else if (item.type === 'user') { %>
+      <!-- User Card -->
+      <img
+        src="<%= item.avatar_url %>"
+        alt="Profile Picture"
+        class="rounded-full w-16 h-16 mb-2"
+      />
+      <h2 class="text-xl font-bold mb-2"><%= item.login %></h2>
+      <p class="text-gray-600">Location: <%= item.location %></p>
+      <!-- Add other user details here -->
+      <a
+        href="<%= item.html_url %>"
+        class="text-blue-500 hover:underline"
+        target="_blank"
+        >View Profile</a
+      >
+      <% } %>
+    </div>
+    <% }); %>
+  </div>
+</div>
+<% } else { %>
+<div class="min-h-screen flex items-center justify-center">
+  <p>No data available</p>
+</div>
+<% } %> <% include ./partials/footer.ejs %>

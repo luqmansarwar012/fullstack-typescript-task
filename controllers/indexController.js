@@ -8,10 +8,10 @@ const search = async (req, res) => {
     const cacheKey = `${type}:${text}`;
     const githubSearchResult = await searchGitHub(type, text);
     await redisClient.set(cacheKey, JSON.stringify(githubSearchResult));
-    return res.render("index", { data: githubSearchResult, fromCache: false });
+    return res.send({ data: githubSearchResult, fromCache: false });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).send({ error: "Internal Server Error" });
   }
 };
 
