@@ -43,7 +43,7 @@ npm run start
 
 - ### Homepage
 
-Access the homepage at http://localhost:4000/ to view the main application page
+  Access the homepage at http://localhost:4000/ to view the main application page
 
 ## Contributing
 
